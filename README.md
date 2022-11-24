@@ -12,7 +12,7 @@ Based on which graphic driver you are running, you should choose the proper dock
 
 ## Compilation and Running
 
-Steps to compile the Orbslam3 on the sample dataset:
+First clone this repository and follow the following steps to compile Orbslam3 on the sample dataset:
 
 - `./download_dataset_sample.sh`
 - `build_container_cpu.sh`
