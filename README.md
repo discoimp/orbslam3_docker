@@ -4,7 +4,7 @@ This docker is based on ROS noetic on ubuntu 20.04.
 
 This page only runs the CPU version of the original (https://github.com/jahaniam/orbslam3_docker.git) github.
 
-To check if you are running the nvidia driver, simply run `nvidia-smi` and see if get anything.
+
 
 Based on which graphic driver you are running, you should choose the proper docker. 
 
