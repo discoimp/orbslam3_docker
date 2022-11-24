@@ -1,14 +1,12 @@
 # ORB_SLAM3 docker
 
-This docker is based on ros melodic ubuntu 18.
+This docker is based on ROS noetic on ubuntu 20.04.
 
-There are two versions available:
-- CPU based (Xorg Nouveau display)
-- Nvidia Cuda based. 
+This page only runs the CPU version of the original github.
 
 To check if you are running the nvidia driver, simply run `nvidia-smi` and see if get anything.
 
-Based on which graphic driver you are running, you should choose the proper docker. For cuda version, you need to have [nvidia-docker setup](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) on your machine.
+Based on which graphic driver you are running, you should choose the proper docker. 
 
 ---
 
@@ -17,7 +15,7 @@ Based on which graphic driver you are running, you should choose the proper dock
 Steps to compile the Orbslam3 on the sample dataset:
 
 - `./download_dataset_sample.sh`
-- `build_container_cpu.sh` or `build_container_cuda.sh` depending on your machine.
+- `build_container_cpu.sh`
 
 Now you should see ORB_SLAM3 is compiling. 
 To run a test example:
@@ -26,6 +24,6 @@ To run a test example:
 
 ---
 
-You can use vscode remote development (recommended) or sublime to change codes.
+You can use vscode remote development.
 - `docker exec -it orbslam3 bash`
 - `subl /ORB_SLAM3`
