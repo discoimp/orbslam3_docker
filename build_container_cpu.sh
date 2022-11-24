@@ -1,17 +1,3 @@
-# checking if you have nvidia
-if [[ $(nvidia-smi | grep Driver) ]] 2>/dev/null; then
-  echo "******************************"
-  echo """It looks like you have nvidia drivers running. Please make sure your nvidia-docker is setup by following the instructions linked in the README and then run build_container_cuda.sh instead."""
-  echo "******************************"
-  while true; do
-    read -p "Do you still wish to continue?" yn
-    case $yn in
-      [Yy]* ) make install; break;;
-      [Nn]* ) exit;;
-      * ) echo "Please answer yes or no.";;
-    esac
-  done
-fi
 
 # UI permisions
 XSOCK=/tmp/.X11-unix
@@ -42,7 +28,7 @@ docker run -td --privileged --net=host --ipc=host \
     edcela/orbslam3:latest
     
 # Git pull orbslam and compile
-docker exec -it orbslam3 bash -i -c "git clone clone https://github.com/nindanaoto/ORB_SLAM3.git /ORB_SLAM3 && cd /ORB_SLAM3 && chmod +x build.sh && ./build.sh "
+docker exec -it orbslam3 bash -i -c "git clone https://github.com/nindanaoto/ORB_SLAM3.git /ORB_SLAM3 && cd /ORB_SLAM3 && chmod +x build.sh && ./build.sh "
 
 # Compile ORBSLAM3-ROS
 docker exec -it orbslam3 bash -i -c "echo 'ROS_PACKAGE_PATH=/opt/ros/noetic/share:/ORB_SLAM3/Examples/ROS'>>~/.bashrc && source ~/.bashrc && cd /ORB_SLAM3 && chmod +x build_ros.sh && ./build_ros.sh"
