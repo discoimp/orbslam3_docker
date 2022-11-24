@@ -21,7 +21,7 @@ xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 
 xhost +local:docker
 
-docker pull edcela/orbslam3:ubuntu20_noetic_cpu
+docker pull edcela/orbslam3:latest
 
 # Remove existing container
 docker rm -f orbslam3 &>/dev/null
