@@ -21,7 +21,7 @@ xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 
 xhost +local:docker
 
-docker pull jahaniam/orbslam3:ubuntu18_melodic_cpu
+docker pull edcela/orbslam3:ubuntu20_noetic_cpu
 
 # Remove existing container
 docker rm -f orbslam3 &>/dev/null
@@ -39,10 +39,11 @@ docker run -td --privileged --net=host --ipc=host \
     -v `pwd`/Datasets:/Datasets \
     -v /etc/group:/etc/group:ro \
     -v `pwd`/ORB_SLAM3:/ORB_SLAM3 \
-    jahaniam/orbslam3:ubuntu18_melodic_cpu bash
+    edcela/orbslam3:ubuntu20_noetic_cpu bash
     
 # Git pull orbslam and compile
-docker exec -it orbslam3 bash -i -c "git clone -b docker_opencv3.2_fix https://github.com/jahaniam/ORB_SLAM3 /ORB_SLAM3 && cd /ORB_SLAM3 && chmod +x build.sh && ./build.sh "
+docker exec -it orbslam3 bash -i -c "git clone clone https://github.com/nindanaoto/ORB_SLAM3.git /ORB_SLAM3 && cd /ORB_SLAM3 && chmod +x build.sh && ./build.sh "
+
 # Compile ORBSLAM3-ROS
-docker exec -it orbslam3 bash -i -c "echo 'ROS_PACKAGE_PATH=/opt/ros/melodic/share:/ORB_SLAM3/Examples/ROS'>>~/.bashrc && source ~/.bashrc && cd /ORB_SLAM3 && chmod +x build_ros.sh && ./build_ros.sh"
+docker exec -it orbslam3 bash -i -c "echo 'ROS_PACKAGE_PATH=/opt/ros/noetic/share:/ORB_SLAM3/Examples/ROS'>>~/.bashrc && source ~/.bashrc && cd /ORB_SLAM3 && chmod +x build_ros.sh && ./build_ros.sh"
 

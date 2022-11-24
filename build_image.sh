@@ -1,1 +1,1 @@
-docker build -t jahaniam/orbslam3 .
+docker build -t orbslam3 .
