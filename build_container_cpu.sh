@@ -39,7 +39,7 @@ docker run -td --privileged --net=host --ipc=host \
     -v `pwd`/Datasets:/Datasets \
     -v /etc/group:/etc/group:ro \
     -v `pwd`/ORB_SLAM3:/ORB_SLAM3 \
-    edcela/orbslam3:ubuntu20_noetic_cpu bash
+    edcela/orbslam3:latest
     
 # Git pull orbslam and compile
 docker exec -it orbslam3 bash -i -c "git clone clone https://github.com/nindanaoto/ORB_SLAM3.git /ORB_SLAM3 && cd /ORB_SLAM3 && chmod +x build.sh && ./build.sh "
