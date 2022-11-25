@@ -22,4 +22,3 @@ To run a test example:
 
 You can use vscode remote development.
 - `docker exec -it orbslam3 bash`
-- `subl /ORB_SLAM3`
